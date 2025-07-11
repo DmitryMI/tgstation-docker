@@ -1,0 +1,49 @@
+Database:
+  DatabaseType: MariaDB
+  ResetAdminPassword: false
+  ConnectionString: Server=mariadb;User ID=tgs;Password=mT9etv46fSjtzd;Database=tgs
+  DropDatabase: false
+  ServerVersion: 10.11.13
+General:
+  ConfigVersion: 5.7.0
+  ApiPort: 5000
+  PrometheusPort: 
+  GitHubAccessToken:
+  SetupWizardMode: Never
+  ByondTopicTimeout: 5000
+  RestartTimeoutMinutes: 1
+  ShutdownTimeoutMinutes: 300
+  UseBasicWatchdog: false
+  HostApiDocumentation: false
+  SkipAddingByondFirewallException: false
+  DeploymentDirectoryCopyTasksPerCore: 
+  OpenDreamGitUrl: https://github.com/OpenDreamProject/OpenDream
+  OpenDreamGitTagPrefix: v
+  OpenDreamSuppressInstallOutput: false
+  AdditionalEventScriptsDirectories: 
+  MinimumPasswordLength: 15
+  InstanceLimit: 10
+  UserLimit: 100
+  UserGroupLimit: 25
+  ValidInstancePaths: 
+FileLogging:
+  Directory: 
+  Disable: false
+  ProviderNetworkDebug: false
+  LogLevel: Debug
+  MicrosoftLogLevel: Warning
+Elasticsearch:
+  Enable: false
+  Host: 
+  Username: 
+  Password: 
+ControlPanel:
+  Enable: true
+  AllowAnyOrigin: true
+  PublicPath: 
+  AllowedOrigins: 
+Swarm: 
+Telemetry:
+  DisableVersionReporting: true
+  ServerFriendlyName: 
+  VersionReportingRepositoryId: 841149827

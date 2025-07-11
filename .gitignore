@@ -1,4 +1,5 @@
 tgs/*
+!tgs/config_data
 !tgs/config_data/appsettings.Production.yml
 db/*
 !db/db_init
