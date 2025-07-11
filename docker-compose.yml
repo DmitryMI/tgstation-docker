@@ -11,7 +11,8 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - ./db/mariadb_data:/var/lib/mysql
+      - ./db/db_init:/docker-entrypoint-initdb.d
     networks:
       - tgnet
 
