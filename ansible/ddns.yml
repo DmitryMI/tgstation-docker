@@ -1,0 +1,41 @@
+---
+- hosts: all
+  become: yes
+
+  vars_prompt:
+    - name: ddns_hostname_game
+      prompt: "Enter your DNS hostname for game server (e.g. game.dynv6.net)"
+      private: no
+
+    - name: ddns_password
+      prompt: "Enter your Dynv6 password/token"
+      private: yes
+
+  tasks:
+    - name: Ensure ddclient is installed
+      apt:
+        name: ddclient
+        state: present
+        update_cache: yes
+
+    - name: Configure ddclient
+      copy:
+        dest: /etc/ddclient.conf
+        owner: root
+        group: root
+        mode: '0600'
+        content: |
+          protocol=dyndns2
+          use=if, if=eth0
+          server=dynv6.com
+          ssl=yes
+          login=none
+          password='{{ ddns_password }}'
+          {{ ddns_hostname_game }}, {{ ddns_hostname_control }}
+
+    - name: Enable and start ddclient service
+      systemd:
+        name: ddclient
+        enabled: yes
+        state: started
+

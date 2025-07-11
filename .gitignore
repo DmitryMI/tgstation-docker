@@ -1,0 +1,16 @@
+# Docker volumes
+*.pid
+*.sock
+/volumes
+/data
+
+# Logs
+*.log
+
+# Editor junk
+*.swp
+.DS_Store
+*.bak
+
+# OS specific
+Thumbs.db
