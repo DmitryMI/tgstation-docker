@@ -1,0 +1,45 @@
+services:
+  mariadb:
+    image: mariadb:10.6
+    container_name: tgs_mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Ec2PdaSmkvUVQjs
+      MYSQL_DATABASE: tgs
+      MYSQL_USER: tgs
+      MYSQL_PASSWORD: mT9etv46fSjtzd
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - tgnet
+
+  tgstation:
+    image: tgstation/server:latest
+    container_name: tgs
+    restart: always
+    cap_add:
+      - SYS_NICE
+      - SYS_RESOURCE
+    init: true
+    tty: true
+    stdin_open: true
+    ports:
+      - "5000:5000"
+      - "1337:1337"
+    volumes:
+      - ./tgs/config_data:/config_data
+      - ./tgs/instances:/tgs_instances
+      - ./tgs/logs:/tgs_logs
+    depends_on:
+      - mariadb
+    networks:
+      - tgnet
+
+volumes:
+  mariadb_data:
+
+networks:
+  tgnet:
+    driver: bridge
